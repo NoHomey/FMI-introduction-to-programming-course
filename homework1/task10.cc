@@ -35,6 +35,8 @@ READ(c##n)\
 
 #define ONE_SOLUTION() solution = One
 
+#define NO_SOLUTION() solution = No
+
 #define GAUSE(n1, n2, n3, cnt , calc)\
 CONST_FLOAT(k##n1, (-cnt##n2) / cnt##n1);\
 CONST_FLOAT(calc##n3, (calc##n1 * k##n1) + calc##n2);\
@@ -43,7 +45,7 @@ CONST_FLOAT(c##n3, (c##n1 * k##n1) + c##n2)\
 #define IF_ZERO_AND_NO_SOLUTION_THAN_SOLVE(zero, first, second, divisor1, divisor2, n1, n2)\
 if(IS_ZERO(zero) && (solution == Many)) {\
     if IS_ZERO(divisor1##n1) {\
-        solution = No;\
+        NO_SOLUTION();\
     } else {\
         first = SOLUTION_PART_1(n1, divisor1);\
         second = SOLUTION_PART_2(n2, divisor1, first, divisor2);\
@@ -106,10 +108,8 @@ int main() {
         if(solution == Many) {
             GAUSE(1, 2, 3, a, b);
             GAUSE(2, 1, 4, b, a);
-            if(IS_ZERO(b3) || IS_ZERO(a4)) {
-                if(IS_NOT_ZERO(c3) || IS_NOT_ZERO(c4)) {
-                    solution = No;
-                }
+            if((IS_ZERO(b3) && IS_NOT_ZERO(c3)) || (IS_ZERO(a4) && IS_NOT_ZERO(c4))) {
+                NO_SOLUTION();
             } else {
                 FIND_SOLUTION(1, y, x, 3, b, a);
                 FIND_SOLUTION(2, x, y, 4, a, b);
