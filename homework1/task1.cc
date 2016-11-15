@@ -59,7 +59,7 @@ int main(void) {
     DEFINE_VARIABLE(ones);
     cin >> inputNumber;
     if(inputNumber > MAX_INPUT_VALUE) {
-        cout << "Invalid number!" << endl;
+        cout << "Invalid number!";
     } else {
         EXTRACT_DIGIT(ones);
         EXTRACT_DIGIT(tens);
@@ -73,8 +73,8 @@ int main(void) {
         PRINT_ROMAN(hundreds, 'C', 'D', 'M')
         PRINT_ROMAN(tens, 'X', 'L', 'C')
         PRINT_ROMAN(ones, 'I', 'V', 'X')
-        cout << '\n';
     }
+    cout << '\n';
 
     return 0;
 }
