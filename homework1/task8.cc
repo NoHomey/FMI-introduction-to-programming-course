@@ -23,12 +23,12 @@ int main(void) {
     bool plus = false;
     cin >> sum;
     PRINT(sum) << " =";
-    PRINT_IF_INCLUDES(50);
-    PRINT_IF_INCLUDES(20);
-    PRINT_IF_INCLUDES(10);
-    PRINT_IF_INCLUDES(5);
-    PRINT_IF_INCLUDES(2);
-    PRINT_IF_INCLUDES(1);
+    PRINT_IF_INCLUDES(50)
+    PRINT_IF_INCLUDES(20)
+    PRINT_IF_INCLUDES(10)
+    PRINT_IF_INCLUDES(5)
+    PRINT_IF_INCLUDES(2)
+    PRINT_IF_INCLUDES(1)
     PRINT('\n');
 
     return 0;
