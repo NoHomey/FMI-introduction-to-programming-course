@@ -37,6 +37,14 @@ int main(void) {
     DEFINE_RECTANGLE(2);
     READ_RECTANGLE(1);
     READ_RECTANGLE(2);
+    /**
+    * The formula for calculating the area of intersection between two rectangles
+    * is taken from the accepted answer of the question: "Calculate overlapped area between two rectangles".
+    * Asked by Eric Bal <http://stackoverflow.com/users/4230794/eric-bal>,
+    * at stackoverflow <http://stackoverflow.com/>.
+    * Question reference: <http://stackoverflow.com/questions/27152904/calculate-overlapped-area-between-two-rectangles>.
+    * Author of the accpeted answer is: tom10 <http://stackoverflow.com/users/102302/tom10>.
+    */
     CALCULATE(x, width);
     CALCULATE(y, height);
     cout << (((width > 0) && (height > 0)) ? (width * height) : 0) << '\n';
