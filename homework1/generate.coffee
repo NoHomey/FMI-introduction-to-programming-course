@@ -5,7 +5,7 @@ outputDir = 'out'
 begin = '/* @begin */'
 std = '#include <iostream>\nusing namespace std;\n'
 format = 'clang-format -style=Google'
-encoding = 'utf8'
+encoding = 'ascii'
 idnumber = 45342
 
 generate = (task) ->
