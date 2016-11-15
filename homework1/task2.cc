@@ -100,7 +100,7 @@ int main() {
                     break;
                 case 2: limit = (IS_EVEN_DIVIDABLE(year, 4) && IS_EVEN_DIVIDABLE(fullYear, 100) && IS_EVEN_DIVIDABLE(fullYear, 400)) ? 29 : 28;
             }
-            invalid = normalizatedMonth > limit;
+            invalid = day > limit;
         } else {
             invalid = true;
         }
