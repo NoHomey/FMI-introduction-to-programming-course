@@ -89,7 +89,8 @@ int main() {
     }
     invalid = (normalizatedMonth == 0) || (normalizatedMonth > 12);
     IF_VALID() {
-        if(day != 0) {
+        invalid = day == 0;
+        IF_VALID() {
             unsigned short limit = 31;
             switch(normalizatedMonth) {
                 case 4:
@@ -101,8 +102,6 @@ int main() {
                 case 2: limit = (IS_EVEN_DIVIDABLE(year, 4) && IS_EVEN_DIVIDABLE(fullYear, 100) && IS_EVEN_DIVIDABLE(fullYear, 400)) ? 29 : 28;
             }
             invalid = day > limit;
-        } else {
-            invalid = true;
         }
     }
     IF_VALID() {

@@ -58,7 +58,7 @@ int main(void) {
     DEFINE_VARIABLE(tens);
     DEFINE_VARIABLE(ones);
     cin >> inputNumber;
-    if(inputNumber > MAX_INPUT_VALUE) {
+    if((inputNumber > MAX_INPUT_VALUE) || (inputNumber == 0)) {
         cout << "Invalid number!";
     } else {
         EXTRACT_DIGIT(ones);

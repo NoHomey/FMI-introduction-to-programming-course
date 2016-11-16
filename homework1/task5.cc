@@ -23,12 +23,17 @@ READ_VALUE(input2)\
 
 #define RADIUS(n, r) SQUARE_OF(R##n, SQUARE(r))
 
+#define LESS_THAN(a, b) (a <= (b - EPSILON))
+
+#define GREATER_THAN(a, b) (a >= (b + EPSILON))
+
 #define IF_DISTANCE_BETWEEN_RADIUS(r1, r2, points)\
-if((SQUARE_OF_DISTANCE > SQUARE_OF_R##r1) && (SQUARE_OF_DISTANCE < SQUARE_OF_R##r2)) {\
+if(GREATER_THAN(SQUARE_OF_DISTANCE, SQUARE_OF_R##r1) && LESS_THAN(SQUARE_OF_DISTANCE, SQUARE_OF_R##r2)) {\
     score = points;\
 }\
 
 /* @begin */
+CONST_FLOAT(EPSILON, 0.001);
 RADIUS(1, 8);
 RADIUS(2, 3);
 RADIUS(3, 1);
@@ -42,7 +47,7 @@ int main() {
     CONST_FLOAT(Y, y + v);
     SQUARE_OF(DISTANCE, SQUARE(X) + SQUARE(Y));
     VAR_FLOAT(score);
-    if(SQUARE_OF_DISTANCE < SQUARE_OF_R3) {
+    if LESS_THAN(SQUARE_OF_DISTANCE, SQUARE_OF_R3) {
         score = 60;
     }
     IF_DISTANCE_BETWEEN_RADIUS(3, 2, 20)
