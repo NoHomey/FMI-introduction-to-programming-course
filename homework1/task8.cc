@@ -8,19 +8,17 @@ using namespace std;
 #define PRINT_IF_INCLUDES(banknote)\
 if(sum >= banknote) {\
     count = sum / banknote;\
-    if(plus) {\
-        PRINT(" +");\
-    }\
     PRINT(' ') << count << '*' << banknote;\
     sum -= count * banknote;\
-    plus = true;\
+    if(sum > 0) {\
+        PRINT(" +");\
+    }\
 }\
 
 /* @begin */
 int main(void) {
     DEFINE_VARIABLE(sum);
     DEFINE_VARIABLE(count);
-    bool plus = false;
     cin >> sum;
     PRINT(sum) << " =";
     PRINT_IF_INCLUDES(50)
