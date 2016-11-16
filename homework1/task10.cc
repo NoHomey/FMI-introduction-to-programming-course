@@ -23,9 +23,9 @@ READ(a##n);\
 READ(b##n);\
 READ(c##n)\
 
-#define IS_ZERO(value) (value == 0)
+#define IS_ZERO(value) IS_LESS_THAN_EPSILON(value)
 
-#define IS_NOT_ZERO(value) (value != 0)
+#define IS_NOT_ZERO(value) (!IS_LESS_THAN_EPSILON(value))
 
 #define IS_NOT_ZERO_LINE(line) (IS_NOT_ZERO(a##line) || IS_NOT_ZERO(b##line) || IS_NOT_ZERO(c##line))
 
@@ -72,7 +72,7 @@ if((absWholePart >= a) && (absWholePart < b)) {\
 }\
 
 #define FORMAT(num)\
-sign = (num < 0 ? -1 : 1);\
+sign = (num <= -EPSILON ? -1 : 1);\
 wholePart = num + (sign * EPSILON);\
 multiplier = 1;\
 absWholePart = sign * wholePart;\
