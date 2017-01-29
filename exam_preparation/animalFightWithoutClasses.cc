@@ -13,15 +13,19 @@ float haste[BEGINING];
 float knowledge[BEGINING];
 float health[BEGINING];
 
+void shiftFloats(float* array, const size_t index) {
+    array[index] = array[index + 1];
+}
+
 void kill(size_t index) {
     const size_t last = count - 1;
     for(size_t i = index; i < last; ++i) {
         id[i] = id[i + 1];
-        power[i] = power[i + 1];
-        agility[i] = agility[i + 1];
-        haste[i] = haste[i + 1];
-        knowledge[i] = knowledge[i + 1];
-        health[i] = health[i + 1];
+        shiftFloats(power, i);
+        shiftFloats(agility, i);
+        shiftFloats(haste, i);
+        shiftFloats(knowledge, i);
+        shiftFloats(health, i);
     }
     --count;
 }
@@ -42,11 +46,9 @@ float attack(const size_t attacking, const size_t attacked) {
     return (hitChance(attacking, attacked) - randomChance()) > EPSILON ? hitDamage(attacking, attacked) : 0.0;
 }
 
-
 void takeDamage(const size_t attacked, const float damage) {
     health[attacked] -= damage;
 }
-
 
 bool isAlive(const size_t index) {
     return health[index] > EPSILON;
