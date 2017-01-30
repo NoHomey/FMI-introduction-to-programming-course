@@ -60,9 +60,11 @@ int** readSquareMatrix(const size_t n) {
 }
 
 bool matrixHasTwoLineInPermutation(int** matrix, const size_t n) {
-    for(size_t i = 1; i < n; ++i) {
-        if(areVectorsInPermutation(matrix[0], matrix[i], n)) {
-            return true;
+    for(size_t i = 0; i < n; ++i) {
+        for(size_t j = 0; j < n; ++j) {
+            if(areVectorsInPermutation(matrix[i], matrix[j], n)) {
+                return true;
+            }
         }
     }
 
