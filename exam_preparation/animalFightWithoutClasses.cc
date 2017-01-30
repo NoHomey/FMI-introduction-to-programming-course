@@ -17,7 +17,7 @@ void shiftFloats(float* array, const size_t index) {
     array[index] = array[index + 1];
 }
 
-void kill(size_t index) {
+void kill(const size_t index) {
     const size_t last = count - 1;
     for(size_t i = index; i < last; ++i) {
         id[i] = id[i + 1];
