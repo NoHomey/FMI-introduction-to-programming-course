@@ -20,16 +20,21 @@ bool canStepOn(int row, int col) {
 
 bool canExit(int row, int col, int countOfPythonsThatCanKill = 3) {
     if((row == 0) && (col == 0)) {
-        return ((countOfPythonsThatCanKill == 0) && (maze[0][0] == EMPTY)) || ((countOfPythonsThatCanKill == 1) && (maze[0][0] == PYTHON));
+        if(maze[0][0] == PYTHON) {
+            if(countOfPythonsThatCanKill == 0) {
+                return false;
+            }
+            --countOfPythonsThatCanKill;
+        }
+        return ((countOfPythonsThatCanKill >= 0) && (countOfPythonsThatCanKill <= 3));
     }
     const char ORIGINAL_CELL = maze[row][col];
     bool isPossible = false;
     if(ORIGINAL_CELL == PYTHON) {
         if(countOfPythonsThatCanKill == 0) {
             return false;
-        } else {
-            --countOfPythonsThatCanKill;
         }
+        --countOfPythonsThatCanKill;
     }
     maze[row][col] = WALL;
     if(canStepOn(row + 1, col) && canExit(row + 1, col, countOfPythonsThatCanKill)) {
