@@ -23,9 +23,6 @@ bool areEqual(const char* str1, const char* str2, const size_t str2Length) {
 }
 
 bool wordIsFound(char** words, size_t wordsCount, const char* word, size_t length) {
-    if(wordsCount == 0) {
-        return false;
-    }
     for(size_t i = 0; i < wordsCount; ++i) {
         if(areEqual(words[i], word, length)) {
             return true;
